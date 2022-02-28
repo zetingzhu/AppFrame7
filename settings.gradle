@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "AppFrame7"
 include ':app'
+include ':zt-threeprogress'
