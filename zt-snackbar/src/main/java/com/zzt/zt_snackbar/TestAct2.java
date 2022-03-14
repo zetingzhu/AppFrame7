@@ -24,11 +24,12 @@ public class TestAct2 extends AppCompatActivity {
         btn_show = findViewById(R.id.btn_show);
         btn_skip = findViewById(R.id.btn_skip);
         btn_show.setOnClickListener(v -> {
-            SnackbarUtils.Long(tv_text, "qqqqqqqqqqqq");
+            SnackbarUtils.Long(tv_text, "qqqqqqqqqqqq").show();
         });
 
         btn_skip.setOnClickListener(v -> {
-
+            SnackBarHelper.finishSnackbar("地下页面显示");
+            finish();
         });
     }
 }

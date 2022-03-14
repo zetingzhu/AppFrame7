@@ -10,3 +10,4 @@ rootProject.name = "AppFrame7"
 include ':app'
 include ':zt-threeprogress'
 include ':zt-snackbar'
+include ':xtrend-util'

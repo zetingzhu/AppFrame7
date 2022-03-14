@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
-String TAG = "ZZZZ" ;
+    String TAG = "ZZZZ";
     TextView tv_text;
     Button btn_show, btn_skip, btn_skip_test;
     CoordinatorLayout coorl_layout;
@@ -43,28 +43,31 @@ String TAG = "ZZZZ" ;
         });
         btn_skip.setOnClickListener(v -> {
 
-            ViewParent parent = btn_skip.getParent();
+            Intent intent = new Intent(MainActivity.this, TestAct2.class);
+            startActivity(intent);
+            SnackBarHelper.startSnackbar("下个页面显示");
 
-            SnackbarUtils.Indefinite(btn_skip, "上面")
-                    .gravityFrameLayout(Gravity.TOP)
-                    .above(btn_show, 0, 0, 0)
-                    .setCallback(new Snackbar.Callback(){
-                        @Override
-                        public void onShown(Snackbar sb) {
-                            super.onShown(sb);
-                            Log.d(TAG , "显示") ;
-                            ViewParent parent1 = sb.getView().getParent();
-                            Log.d(TAG , parent1.toString());
-                        }
-
-                        @Override
-                        public void onDismissed(Snackbar transientBottomBar, int event) {
-                            super.onDismissed(transientBottomBar, event);
-
-                            Log.d(TAG , "消失") ;
-                        }
-                    })
-                    .show();
+//            ViewParent parent = btn_skip.getParent();
+//            SnackbarUtils.Indefinite(btn_skip, "上面")
+//                    .gravityFrameLayout(Gravity.TOP)
+//                    .above(btn_show, 0, 0, 0)
+//                    .setCallback(new Snackbar.Callback(){
+//                        @Override
+//                        public void onShown(Snackbar sb) {
+//                            super.onShown(sb);
+//                            Log.d(TAG , "显示") ;
+//                            ViewParent parent1 = sb.getView().getParent();
+//                            Log.d(TAG , parent1.toString());
+//                        }
+//
+//                        @Override
+//                        public void onDismissed(Snackbar transientBottomBar, int event) {
+//                            super.onDismissed(transientBottomBar, event);
+//
+//                            Log.d(TAG , "消失") ;
+//                        }
+//                    })
+//                    .show();
         });
         btn_show.setOnClickListener(v -> {
             int total = 0;
