@@ -144,7 +144,8 @@ final class UtilsActivityLifecycleImpl implements Application.ActivityLifecycleC
         }
     }
 
-    private void consumeActivityLifecycleCallbacks(Activity activity, Lifecycle.Event event) {
+    private void
+    consumeActivityLifecycleCallbacks(Activity activity, Lifecycle.Event event) {
         consumeLifecycle(activity, event, mActivityLifecycleCallbacksMap.get(activity));
         consumeLifecycle(activity, event, mActivityLifecycleCallbacksMap.get(STUB));
     }

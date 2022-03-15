@@ -26,6 +26,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.lang.ref.WeakReference;
@@ -395,6 +396,19 @@ public class SnackbarUtils {
     public SnackbarUtils setCallback(Snackbar.Callback setCallback) {
         if (getSnackbar() != null) {
             getSnackbar().setCallback(setCallback);
+        }
+        return this;
+    }
+
+    /**
+     * 设置 mSnackbar 展示完成 及 隐藏完成 的监听
+     *
+     * @param setCallback
+     * @return
+     */
+    public SnackbarUtils addCallback(BaseTransientBottomBar.BaseCallback<Snackbar> setCallback) {
+        if (getSnackbar() != null) {
+            getSnackbar().addCallback(setCallback);
         }
         return this;
     }

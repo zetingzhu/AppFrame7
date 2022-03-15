@@ -43,9 +43,11 @@ public class MainActivity extends AppCompatActivity {
         });
         btn_skip.setOnClickListener(v -> {
 
+            SnackBarHelper.getInstance().showSnackbar(btn_skip, "看看这个能不能跨页面来");
             Intent intent = new Intent(MainActivity.this, TestAct2.class);
             startActivity(intent);
-            SnackBarHelper.startSnackbar("下个页面显示");
+//            SnackBarHelper.startSnackbar("下个页面显示");
+
 
 //            ViewParent parent = btn_skip.getParent();
 //            SnackbarUtils.Indefinite(btn_skip, "上面")
