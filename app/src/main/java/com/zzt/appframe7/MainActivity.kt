@@ -58,5 +58,15 @@ class MainActivity : AppCompatActivity() {
                 .gravityFrameLayout(Gravity.CENTER)
                 .show()
         }
+        findViewById<Button>(R.id.button8).setOnClickListener {
+            SnackbarUtils.Custom(mContentView,"10s+左右drawable+背景色+圆角带边框+指定View下方",1000*10)
+                .leftAndRightDrawable(R.mipmap.ic_launcher,R.mipmap.ic_launcher)
+                .backColor(Color.parseColor("#668899"))
+                .radius(16,1,Color.BLUE)
+//                .bellow(bt_margins,total,16,16)
+                .show();
+
+//            SnackbarUtils.Long(mContentView, "wwwwwwwwwwww").show()
+        }
     }
 }

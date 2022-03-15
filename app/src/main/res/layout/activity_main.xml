@@ -61,12 +61,22 @@
             android:text="显示下一个页面"
             tools:layout_editor_absoluteX="91dp"
             tools:layout_editor_absoluteY="59dp" />
+
         <Button
             android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="1000dp"
             android:text="显示文案"
+            tools:layout_editor_absoluteX="91dp"
+            tools:layout_editor_absoluteY="59dp" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1000dp"
+            android:text="显示特别背景，监听关闭"
             tools:layout_editor_absoluteX="91dp"
             tools:layout_editor_absoluteY="59dp" />
 
