@@ -7,14 +7,14 @@ import android.view.ViewGroup;
 
 /**
  * Note: this class is here to provide backwards-compatible way for apps written before the
- * existence of the base {@link MBaseTransientBottomBar} class.
+ * existence of the base {@link ToastBaseTransientBottomBar} class.
  */
-public class MSnackbarLayout  extends MBaseTransientBottomBar.SnackbarBaseLayout {
-    public MSnackbarLayout(Context context) {
+public class ToastSnackbarLayout extends ToastSnackbarBaseLayout {
+    public ToastSnackbarLayout(Context context) {
         super(context);
     }
 
-    public MSnackbarLayout(Context context, AttributeSet attrs) {
+    public ToastSnackbarLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

@@ -39,4 +39,5 @@ dependencies {
 
 
     implementation 'com.github.zetingzhu:ZZTUtilCode:1.1.9'
+//    implementation "com.android.tools.build:gradle:7.0.3"
 }

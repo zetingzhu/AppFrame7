@@ -28,20 +28,20 @@ import com.google.android.material.snackbar.Snackbar;
 import java.lang.ref.WeakReference;
 
 /**
- * Manages {@link Snackbar}s.
+ * Manages
  */
-class MSnackbarManager {
+class ToastSnackbarManager {
 
     static final int MSG_TIMEOUT = 0;
 
     private static final int SHORT_DURATION_MS = 1500;
     private static final int LONG_DURATION_MS = 2750;
 
-    private static MSnackbarManager snackbarManager;
+    private static ToastSnackbarManager snackbarManager;
 
-    static MSnackbarManager getInstance() {
+    static ToastSnackbarManager getInstance() {
         if (snackbarManager == null) {
-            snackbarManager = new MSnackbarManager();
+            snackbarManager = new ToastSnackbarManager();
         }
         return snackbarManager;
     }
@@ -56,7 +56,7 @@ class MSnackbarManager {
     @Nullable
     private SnackbarRecord nextSnackbar;
 
-    private MSnackbarManager() {
+    private ToastSnackbarManager() {
         lock = new Object();
         handler = new Handler(Looper.getMainLooper(), new Handler.Callback() {
             @Override

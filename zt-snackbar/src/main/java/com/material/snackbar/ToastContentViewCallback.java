@@ -19,7 +19,7 @@ package com.material.snackbar;
 /**
  * Interface that defines the behavior of the main content of a transient bottom bar.
  */
-public interface MContentViewCallback {
+  interface ToastContentViewCallback {
     /**
      * Animates the content of the transient bottom bar in.
      *

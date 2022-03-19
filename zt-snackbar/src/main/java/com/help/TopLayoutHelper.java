@@ -43,14 +43,8 @@ public class TopLayoutHelper {
     private float mShadowAlpha;
     private int mShadowColor = Color.BLACK;
 
-    public TopLayoutHelper(Context context, AttributeSet attrs, int defAttr, View owner) {
-        this(context, attrs, defAttr, 0, owner);
-    }
-
-    public TopLayoutHelper(Context context, AttributeSet attrs, int defAttr, int defStyleRes, View owner) {
+    public TopLayoutHelper(Context context, View owner) {
         mOwner = new WeakReference<>(owner);
-        int radius = 0, shadow = 0;
-        setRadiusAndShadow(radius, shadow, mShadowAlpha);
     }
 
     public int getShadowElevation() {

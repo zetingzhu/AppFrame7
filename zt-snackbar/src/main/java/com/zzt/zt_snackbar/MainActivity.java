@@ -1,27 +1,15 @@
 package com.zzt.zt_snackbar;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewParent;
-import android.widget.AbsListView;
-import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.QuickContactBadge;
-import android.widget.TextView;
 
-import com.google.android.material.internal.ViewUtils;
-import com.google.android.material.snackbar.Snackbar;
-import com.material.snackbar.MBaseTransientBottomBar;
-import com.material.snackbar.MSnackbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.material.snackbar.ToastSnackbar;
+import com.trade.utilcode.util.ToastUtils;
 import com.zzt.adapter.StartActivityRecyclerAdapter;
 import com.zzt.entity.StartActivityDao;
 
@@ -47,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
         mListDialog.add(new StartActivityDao("跳test2 页面", "", "2"));
         mListDialog.add(new StartActivityDao("SnackbarUtils 常用设置", "", "3"));
         mListDialog.add(new StartActivityDao("MSnackbar 使用", "", "4"));
+        mListDialog.add(new StartActivityDao("一直显示", "", "5"));
+        mListDialog.add(new StartActivityDao("ToastSnackbar 测试", "", "6"));
+        mListDialog.add(new StartActivityDao("成功的", "", "7"));
+        mListDialog.add(new StartActivityDao("失败的", "", "8"));
+        mListDialog.add(new StartActivityDao("订单的", "", "9"));
 
         StartActivityRecyclerAdapter.setAdapterData(recyclerview, RecyclerView.VERTICAL, mListDialog, (itemView, position, data) -> {
             switch (data.getArouter()) {
@@ -71,8 +64,79 @@ public class MainActivity extends AppCompatActivity {
                             .show();
                     break;
                 case "4":
-                    MSnackbar.make(recyclerview, "dddddddddd", MSnackbar.LENGTH_LONG)
+                    ToastSnackbar.make(recyclerview, "dddddddddd", ToastSnackbar.LENGTH_LONG)
 //                            .setAnimationMode(MBaseTransientBottomBar.ANIMATION_MODE_FADE)
+                            .setAction(null, new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ToastUtils.showShort("这个按钮被点击了");
+                                }
+                            })
+                            .show();
+                    break;
+                case "5":
+                    ToastSnackbar.make(recyclerview, "The default garbage collector was used in this build running " +
+                            "with JDK 11. Note that the default GC was changed starting with JDK 9. " +
+                            "This could impact your build performance by as much as 10%. " +
+                            "Recommendation: Fine tune your JVM .", ToastSnackbar.LENGTH_INDEFINITE)
+                            .setAction(null, new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ToastUtils.showShort("这个按钮被点击了");
+                                }
+                            })
+                            .setBackgroundTint(Color.BLUE)
+                            .show();
+                    break;
+                case "6":
+                    ToastSnackbar.make(recyclerview, "The default garbage collector was used in this build running " +
+                            "with JDK 11. Note that the default GC was changed starting with JDK 9. " +
+                            "This could impact your build performance by as much as 10%. " +
+                            "Recommendation: Fine tune your JVM . content parent ", ToastSnackbar.LENGTH_INDEFINITE)
+                            .setAction(null, new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ToastUtils.showShort("这个按钮被点击了");
+                                }
+                            })
+                            .setBackgroundTint(Color.WHITE)
+                            .margins(30, 30, 30, 30)
+                            .show();
+                    break;
+                case "7":
+                    SnackbarUtil.makeSuccess(recyclerview,
+                            "成功",
+                            ToastSnackbar.LENGTH_LONG)
+                            .setAction(null, new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ToastUtils.showShort("这个按钮被点击了");
+                                }
+                            })
+                            .show();
+                    break;
+                case "8":
+                    SnackbarUtil.makeFailed(recyclerview,
+                            "失败",
+                            ToastSnackbar.LENGTH_LONG)
+                            .setAction(null, new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ToastUtils.showShort("这个按钮被点击了");
+                                }
+                            })
+                            .show();
+                    break;
+                case "9":
+                    SnackbarUtil.makeOrder(recyclerview,
+                            "订单",
+                            ToastSnackbar.LENGTH_LONG)
+                            .setAction(null, new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ToastUtils.showShort("这个按钮被点击了");
+                                }
+                            })
                             .show();
                     break;
             }
