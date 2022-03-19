@@ -29,6 +29,7 @@ import androidx.core.view.ViewCompat;
 
 import com.google.android.material.R;
 import com.google.android.material.color.MaterialColors;
+import com.help.TopLayoutHelper;
 
 public class MSnackbarContentLayout extends LinearLayout implements MContentViewCallback {
     private TextView messageView;
@@ -37,8 +38,11 @@ public class MSnackbarContentLayout extends LinearLayout implements MContentView
     private int maxWidth;
     private int maxInlineActionWidth;
 
+    TopLayoutHelper mLayoutHelper;
+
     public MSnackbarContentLayout(@NonNull Context context) {
         this(context, null);
+        init(context, null, 0);
     }
 
     public MSnackbarContentLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
@@ -48,6 +52,11 @@ public class MSnackbarContentLayout extends LinearLayout implements MContentView
         maxInlineActionWidth =
                 a.getDimensionPixelSize(R.styleable.SnackbarLayout_maxActionInlineWidth, -1);
         a.recycle();
+        init(context, attrs, 0);
+    }
+
+    private void init(Context context, AttributeSet attrs, int defStyleAttr) {
+        mLayoutHelper = new TopLayoutHelper(context, attrs, defStyleAttr, this);
     }
 
     @Override
