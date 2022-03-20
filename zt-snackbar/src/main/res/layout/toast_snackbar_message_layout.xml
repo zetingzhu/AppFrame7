@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/snackbar_text"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|left|start"
         android:ellipsize="end"
         android:gravity="center_vertical"
@@ -23,7 +23,7 @@
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="The defaul text" />
+        tools:text="The defaul text " />
 
     <ImageButton
         android:id="@+id/snackbar_right_image"

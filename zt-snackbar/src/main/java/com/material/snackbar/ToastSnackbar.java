@@ -18,6 +18,7 @@ package com.material.snackbar;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -31,8 +32,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.view.ViewCompat;
 
 import com.material.snackbar.widget.ToastMessageLayout;
+import com.zzt.zt_snackbar.R;
 
 /**
  * Snackbars provide lightweight feedback about an operation. They show a brief message at the
@@ -258,15 +261,37 @@ public class ToastSnackbar extends ToastBaseTransientBottomBar<ToastSnackbar> {
      */
     @NonNull
     public ToastSnackbar setBackgroundTintList(@Nullable ColorStateList colorStateList) {
-        view.setBackgroundTintList(colorStateList);
+        final View contentLayout = this.view.getChildAt(0);
+        if (contentLayout instanceof ToastSnackbarContentLayout) {
+            ((ToastSnackbarContentLayout) contentLayout).setBackgroundTintList(colorStateList);
+        }
         return this;
     }
 
     @NonNull
     public ToastSnackbar setBackgroundTintMode(@Nullable PorterDuff.Mode mode) {
-        view.setBackgroundTintMode(mode);
+        final View contentLayout = this.view.getChildAt(0);
+        if (contentLayout instanceof ToastSnackbarContentLayout) {
+            ((ToastSnackbarContentLayout) contentLayout).setBackgroundTintMode(mode);
+        }
         return this;
     }
+
+    /**
+     * set bottom view  is disallow intercept
+     *
+     * @param disallowIntercept true ： disallow touch  , false ： enable touch
+     * @return
+     */
+    @NonNull
+    public ToastSnackbar disallowIntercept(boolean disallowIntercept) {
+        final View contentLayout = this.view.getChildAt(0);
+        if (contentLayout instanceof ToastSnackbarContentLayout) {
+            ((ToastSnackbarContentLayout) contentLayout).setDisallowIntercept(disallowIntercept);
+        }
+        return this;
+    }
+
 
     /**
      * Update the text in this
@@ -358,7 +383,7 @@ public class ToastSnackbar extends ToastBaseTransientBottomBar<ToastSnackbar> {
     }
 
     /**
-     * 设置边距
+     * set margins
      *
      * @param left   left
      * @param top    top
@@ -367,18 +392,37 @@ public class ToastSnackbar extends ToastBaseTransientBottomBar<ToastSnackbar> {
      * @return
      */
     public ToastSnackbar margins(int left, int top, int right, int bottom) {
-        if (getView() != null) {
-            ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+        final View contentLayout = this.view.getChildAt(0);
+        if (contentLayout instanceof ToastSnackbarContentLayout) {
+            ViewGroup.LayoutParams layoutParams = contentLayout.getLayoutParams();
             if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
                 ((ViewGroup.MarginLayoutParams) layoutParams).setMargins(left, top, right, bottom);
-                getView().setLayoutParams(layoutParams);
+                contentLayout.setLayoutParams(layoutParams);
             }
         }
         return this;
     }
 
     /**
-     * 设置背景属性
+     * Sets the padding. The view may add on the space required to display the scrollbars, depending on the style and visibility of the scrollbars. So the values returned from getPaddingLeft, getPaddingTop, getPaddingRight and getPaddingBottom may be different from the values set in this call.
+     * Params:
+     *
+     * @param left   left – the left padding in pixels
+     * @param top    top – the top padding in pixels
+     * @param right  right – the right padding in pixels
+     * @param bottom bottom – the bottom padding in pixels
+     * @return
+     */
+    public ToastSnackbar padding(int left, int top, int right, int bottom) {
+        final View contentLayout = this.view.getChildAt(0);
+        if (contentLayout instanceof ToastSnackbarContentLayout) {
+            contentLayout.setPadding(left, top, right, bottom);
+        }
+        return this;
+    }
+
+    /**
+     * set background properties
      *
      * @param radius          圆角
      * @param shadowElevation 阴影
@@ -387,8 +431,25 @@ public class ToastSnackbar extends ToastBaseTransientBottomBar<ToastSnackbar> {
      * @return
      */
     public ToastSnackbar layoutHelper(int radius, int shadowElevation, int shadowColor, float shadowAlpha) {
-        if (view.getLayoutHelper() != null) {
-            view.getLayoutHelper().setRadiusAndShadow(radius, shadowElevation, shadowColor, shadowAlpha);
+        final View contentLayout = this.view.getChildAt(0);
+        if (contentLayout instanceof ToastSnackbarContentLayout) {
+            if (((ToastSnackbarContentLayout) contentLayout).getLayoutHelper() != null) {
+                ((ToastSnackbarContentLayout) contentLayout).getLayoutHelper().setRadiusAndShadow(radius, shadowElevation, shadowColor, shadowAlpha);
+            }
+        }
+//        if (view.getLayoutHelper() != null) {
+//            view.getLayoutHelper().setRadiusAndShadow(radius, shadowElevation, shadowColor, shadowAlpha);
+//        }
+        return this;
+    }
+
+    /**
+     * Sets the base elevation of this view, in pixels.
+     */
+    public ToastSnackbar elevation(float elevation) {
+        final View contentLayout = this.view.getChildAt(0);
+        if (contentLayout instanceof ToastSnackbarContentLayout) {
+            ViewCompat.setElevation(contentLayout, elevation);
         }
         return this;
     }

@@ -19,7 +19,7 @@ package com.material.snackbar;
 /**
  * Interface that defines the behavior of the main content of a transient bottom bar.
  */
-  interface ToastContentViewCallback {
+interface ToastContentViewCallback {
     /**
      * Animates the content of the transient bottom bar in.
      *
@@ -35,4 +35,10 @@ package com.material.snackbar;
      * @param duration Animation duration.
      */
     void animateContentOut(int delay, int duration);
+
+    /**
+     * request Disallow Intercept Touch Event
+     * @return
+     */
+    boolean requestDisallowInterceptTouchEvent();
 }

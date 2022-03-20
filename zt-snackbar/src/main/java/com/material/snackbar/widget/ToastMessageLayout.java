@@ -12,6 +12,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
 
 import com.material.snackbar.ToastSnackbarContentLayout;
 import com.zzt.zt_snackbar.R;
@@ -98,5 +99,6 @@ public class ToastMessageLayout extends ToastSnackbarContentLayout {
             actionView.setOnClickListener(listener);
         }
     }
+
 
 }

@@ -14,16 +14,29 @@
   ~ limitations under the License.
 -->
 
-<com.material.snackbar.ToastSnackbarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<com.material.snackbar.ToastSnackbarLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_gravity="top"-->
+<!--    android:background="@drawable/design_snackbar_background"-->
+<!--    android:maxWidth="@dimen/design_snackbar_max_width"-->
+<!--    android:minWidth="@dimen/design_snackbar_min_width"-->
+<!--    android:theme="@style/ThemeOverlay.AppCompat.Dark"-->
+<!--    app:animationMode="slide" />-->
+
+
+<com.material.snackbar.ToastSnackbarBaseLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="top"
-    android:background="@drawable/design_snackbar_background"
+    android:background="@android:color/transparent"
     android:maxWidth="@dimen/design_snackbar_max_width"
     android:minWidth="@dimen/design_snackbar_min_width"
-    android:padding="@dimen/design_snackbar_padding_horizontal"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    app:actionTextColorAlpha="@dimen/design_snackbar_action_text_color_alpha"
-    app:animationMode="slide"
-    app:elevation="@dimen/design_snackbar_elevation" />
+    app:animationMode="slide" />
+
+
+    <!--    app:elevation="@dimen/design_snackbar_elevation"-->
+    <!--    app:actionTextColorAlpha="@dimen/design_snackbar_action_text_color_alpha"-->

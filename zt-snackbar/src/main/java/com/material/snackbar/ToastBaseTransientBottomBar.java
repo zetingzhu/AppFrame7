@@ -248,8 +248,6 @@ public abstract class ToastBaseTransientBottomBar<B extends ToastBaseTransientBo
 
     private List<BaseCallback<B>> callbacks;
 
-    @Nullable
-    private final AccessibilityManager accessibilityManager;
 
     /**
      * @hide
@@ -334,8 +332,6 @@ public abstract class ToastBaseTransientBottomBar<B extends ToastBaseTransientBo
                 return super.performAccessibilityAction(host, action, args);
             }
         });
-
-        accessibilityManager = (AccessibilityManager) context.getSystemService(Context.ACCESSIBILITY_SERVICE);
     }
 
 
@@ -506,13 +502,12 @@ public abstract class ToastBaseTransientBottomBar<B extends ToastBaseTransientBo
                     // non-user initiated action. Hence we need to make sure that we callback
                     // and keep our state up to date. We need to post the call since
                     // removeView() will call through to onDetachedFromWindow and thus overflow.
-                    handler.post(
-                            new Runnable() {
-                                @Override
-                                public void run() {
-                                    onViewHidden(BaseCallback.DISMISS_EVENT_MANUAL);
-                                }
-                            });
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            onViewHidden(BaseCallback.DISMISS_EVENT_MANUAL);
+                        }
+                    });
                 }
             }
         });
@@ -521,7 +516,12 @@ public abstract class ToastBaseTransientBottomBar<B extends ToastBaseTransientBo
             // Set view to INVISIBLE so it doesn't flash on the screen before the inset adjustment is
             // handled and the enter animation is started
             view.setVisibility(View.INVISIBLE);
-            targetParent.addView(this.view);
+            if (contentViewCallback.requestDisallowInterceptTouchEvent()) {
+                LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                targetParent.addView(this.view, params);
+            } else {
+                targetParent.addView(this.view);
+            }
         }
 
         if (ViewCompat.isLaidOut(this.view)) {
@@ -761,6 +761,7 @@ public abstract class ToastBaseTransientBottomBar<B extends ToastBaseTransientBo
         // Lastly, hide and remove the view from the parent (if attached)
         ViewParent parent = view.getParent();
         if (parent instanceof ViewGroup) {
+            view.requestDisallowInterceptTouchEvent(false);
             ((ViewGroup) parent).removeView(view);
         }
     }
@@ -769,13 +770,7 @@ public abstract class ToastBaseTransientBottomBar<B extends ToastBaseTransientBo
      * Returns true if we should animate the Snackbar view in/out.
      */
     boolean shouldAnimate() {
-        if (accessibilityManager == null) {
-            return true;
-        }
-        int feedbackFlags = AccessibilityServiceInfo.FEEDBACK_SPOKEN;
-        List<AccessibilityServiceInfo> serviceList =
-                accessibilityManager.getEnabledAccessibilityServiceList(feedbackFlags);
-        return serviceList != null && serviceList.isEmpty();
+        return true;
     }
 
 }

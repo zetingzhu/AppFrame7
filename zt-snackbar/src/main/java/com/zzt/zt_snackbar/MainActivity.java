@@ -100,7 +100,11 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             })
                             .setBackgroundTint(Color.WHITE)
-                            .margins(30, 30, 30, 30)
+                            .margins(30, 50, 30, 30)
+                            .padding(20, 20, 20, 20)
+                            .elevation(10F)
+                            .layoutHelper(30, 30, Color.parseColor("#FF0000"), 1.0f)
+                            .disallowIntercept(true)
                             .show();
                     break;
                 case "7":
