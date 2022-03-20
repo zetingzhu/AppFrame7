@@ -48,10 +48,28 @@ import com.zzt.zt_snackbar.R;
  *
  * <p>To be notified when a snackbar has been shown or dismissed, you can provide a {@link Callback}
  * via {@link ToastBaseTransientBottomBar#addCallback(BaseCallback)}.
+ * ToastSnackbar.make(recyclerview, "text", ToastSnackbar.LENGTH_INDEFINITE)
+ * 设置右边按钮
+ * .setAction(null, new View.OnClickListener() )
+ * 设置背景颜色
+ * .setBackgroundTint(Color.WHITE)
+ * 设置背景距离边缘距离
+ * .margins(30, 50, 30, 30)
+ * 设置内容距离背景距离
+ * .padding(20, 20, 20, 20)
+ * 设置阴影z轴
+ * .elevation(10F)
+ * 设置圆角和z轴
+ * .layoutHelper(30, 30, Color.parseColor("#FF0000"), 1.0f)
+ * 设置是否禁止底部页面操作
+ * .disallowIntercept(true)
+ * 添加显示隐藏监听
+ * .addCallback(new ToastSnackbar.Callback()  )
+ * 添加按钮背景点击事件监听
+ * .setOnClickListener(new View.OnClickListener() )
+ * .show();
  */
 public class ToastSnackbar extends ToastBaseTransientBottomBar<ToastSnackbar> {
-
-
     /**
      * Callback class for {@link ToastSnackbar} instances.
      *
@@ -450,6 +468,14 @@ public class ToastSnackbar extends ToastBaseTransientBottomBar<ToastSnackbar> {
         final View contentLayout = this.view.getChildAt(0);
         if (contentLayout instanceof ToastSnackbarContentLayout) {
             ViewCompat.setElevation(contentLayout, elevation);
+        }
+        return this;
+    }
+
+    public ToastSnackbar setOnClickListener(View.OnClickListener listener) {
+        final View contentLayout = this.view.getChildAt(0);
+        if (contentLayout instanceof ToastSnackbarContentLayout) {
+            contentLayout.setOnClickListener(listener);
         }
         return this;
     }

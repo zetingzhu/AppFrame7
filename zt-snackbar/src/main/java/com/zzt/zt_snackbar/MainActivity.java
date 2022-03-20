@@ -105,6 +105,23 @@ public class MainActivity extends AppCompatActivity {
                             .elevation(10F)
                             .layoutHelper(30, 30, Color.parseColor("#FF0000"), 1.0f)
                             .disallowIntercept(true)
+                            .addCallback(new ToastSnackbar.Callback() {
+                                @Override
+                                public void onShown(ToastSnackbar sb) {
+                                    super.onShown(sb);
+                                }
+
+                                @Override
+                                public void onDismissed(ToastSnackbar transientBottomBar, int event) {
+                                    super.onDismissed(transientBottomBar, event);
+                                }
+                            })
+                            .setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                }
+                            })
                             .show();
                     break;
                 case "7":

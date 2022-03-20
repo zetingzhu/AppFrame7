@@ -28,10 +28,10 @@ import android.view.ViewOutlineProvider;
 import java.lang.ref.WeakReference;
 
 /**
- * @author cginechen
- * @date 2017-03-10
+ * @author zeting
+ * @date 2022-03-20
+ * 设置阴影，阴影颜色，圆角裁剪工具
  */
-
 public class TopLayoutHelper {
 
     // round
