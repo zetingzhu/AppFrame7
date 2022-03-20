@@ -1,53 +1,79 @@
 package com.zzt.appframe7;
 
 import android.text.InputFilter;
+import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.util.Log;
 
 /**
  * @author: zeting
  * @date: 2022/3/18
+ * 长度控制
  */
 public class MLengthFilter implements InputFilter {
-    private static final String TAG = MLengthFilter.class.getSimpleName();
-    private final int mMax;
+    public static final String TAG = MLengthFilter.class.getSimpleName();
+    private final int startMax;
+    private final int endMax;
 
-    public MLengthFilter(int max) {
-        mMax = max;
-    }
-
-    /**
-     * 这里实现字符串过滤，把你允许输入的字母添加到下面的数组即可！
-     */
-    protected char[] getAcceptedChars() {
-        return new char[]{'0', '1', '2', '3'};
+    public MLengthFilter(int start, int end) {
+        startMax = start;
+        endMax = end;
     }
 
     public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
 
-        Log.w(TAG, ">>>> " + source + " s:" + start + " e:" + end + " (d:" + dest + ") ds:" + dstart + " de:" + dend);
 
-        int keep = mMax - (dest.length() - (dend - dstart));
-        if (keep <= 0) {
-            return "";
-        } else if (keep >= end - start) {
-            return null; // keep original
-        } else {
-            keep += start;
-            if (Character.isHighSurrogate(source.charAt(keep - 1))) {
-                --keep;
-                if (keep == start) {
-                    return "";
+
+        Log.w(TAG, ">>>> (" + source + ") s:" + start + " e:" + end + " (d:" + dest + ") ds:" + dstart + " de:" + dend);
+        int index = dest.toString().indexOf(".") + 1;
+        if (index > 0) {
+            if (dest.length() > 0 && dstart < dend) {
+                CharSequence dot = dest.subSequence(dstart, dend);
+                Log.e(TAG, "dot:" + dot);
+                if (".".contains(dot.toString())) {
+                    if (dest.length() > startMax + 1) {
+                        return dot;
+                    } else {
+                        return null;
+                    }
                 }
             }
-            return source.subSequence(start, keep);
+            int keep = (dest.length() - index);
+            Log.e(TAG, "index:" + index + " keep:" + keep);
+            if (dstart >= index) {
+                if (keep >= endMax) {
+                    return "";
+                } else
+                    return null;
+            } else {
+                if (index > startMax) {
+                    return "";
+                } else {
+                    return source;
+                }
+            }
+        } else {
+            if (source.toString().contains(".")) {
+                if ((dest.length() - dstart) > endMax) {
+                    return "";
+                }
+                return null;
+            }
+            int keep = startMax - (dest.length() - (dend - dstart));
+            if (keep <= 0) {
+                return "";
+            } else if (keep >= end - start) {
+                return null; // keep original
+            } else {
+                keep += start;
+                if (Character.isHighSurrogate(source.charAt(keep - 1))) {
+                    --keep;
+                    if (keep == start) {
+                        return "";
+                    }
+                }
+                return source.subSequence(start, keep);
+            }
         }
-    }
-
-    /**
-     * @return the maximum length enforced by this input filter
-     */
-    public int getMax() {
-        return mMax;
     }
 }

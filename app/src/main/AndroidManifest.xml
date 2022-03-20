@@ -10,9 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppFrame7">
         <activity
+            android:name=".InputFilterAct"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".TextActV2"
             android:exported="true">
-
         </activity>
         <activity
             android:name=".TestActivity2"
@@ -20,11 +28,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
