@@ -24,6 +24,6 @@ public class InputFilterAct extends AppCompatActivity {
 
     private void initView() {
         editText = findViewById(R.id.editText);
-        NumberAmountUtils.setAmountThousEdittext(editText, true, 8, 4);
+        NumberAmountUtils.setAmountThousEdittext(editText, false, 4, 2);
     }
 }

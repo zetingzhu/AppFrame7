@@ -27,9 +27,11 @@ public class NumberAmountLengthFilter implements InputFilter {
         int index = dest.toString().indexOf(".");
         Log.e(TAG, ">>>>>>>> index:" + index);
         if (index >= 0) {
-            String replaceIndex = dest.subSequence(0, index).toString().replace(",", "");
-            if (replaceIndex.length() > startMax) {
-                return "";
+            if (dstart <= index) {
+                String replaceIndex = dest.subSequence(0, index).toString().replace(",", "");
+                if (replaceIndex.length() >= startMax) {
+                    return "";
+                }
             }
             StringBuilder ssb = new StringBuilder();
             if (end > start && dest.length() > 0) {
