@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--倾斜角度文字-->
+    <declare-styleable name="SlantedTextView">
+        <attr name="slantedTextSize" format="dimension" />
+        <attr name="slantedBackgroundColor" format="color" />
+        <attr name="slantedText" format="string" />
+        <attr name="slantedTextColor" format="color" />
+        <!--倾斜的显示文案在水平和垂直方向宽度-->
+        <attr name="slantedLength" format="dimension" />
+        <!-- 设置圆角角度-->
+        <attr name="slantedRadius" format="dimension" />
+        <attr name="slantedMode" format="enum">
+            <!--左上，条-->
+            <enum name="left" value="0"></enum>
+            <!--右上，条-->
+            <enum name="right" value="1"></enum>
+            <!--左下，条-->
+            <enum name="left_bottom" value="2"></enum>
+            <!--右下，条-->
+            <enum name="right_bottom" value="3"></enum>
+            <!--左上，三角形-->
+            <enum name="left_triangle" value="4"></enum>
+            <!--右上，三角形-->
+            <enum name="right_triangle" value="5"></enum>
+            <!--左下，三角形-->
+            <enum name="left_bottom_triangle" value="6"></enum>
+            <!--右下，三角形-->
+            <enum name="right_bottom_triangle" value="7"></enum>
+        </attr>
+    </declare-styleable>
+</resources>

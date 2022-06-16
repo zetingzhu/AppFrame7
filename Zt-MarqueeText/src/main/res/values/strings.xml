@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Zt-MarqueeText</string>
+    <string name="marquee_text">开始，这是一个长文本1 ， 这是一个长文本2 ， 结束</string>
+</resources>
