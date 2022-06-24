@@ -11,3 +11,6 @@ zt_fulldialog
 
 Zt-MarqueeText
 textview 多种跑马灯效果 ， MarqueeForeverTextView修改成自己需要的跑马灯效果
+
+zt-magnifier
+放大镜

@@ -2,11 +2,16 @@ package com.zzt.marqueetext;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Collections;
+import java.util.LinkedList;
 
+public class MainActivity extends AppCompatActivity {
+    private static final String TAG = MainActivity.class.getSimpleName();
     private String textLang = "开始，这是一个长文本1 ， 这是一个长文本2 ， 结束";
     private TextView tv_m1, tv_m2;
     private AutoScrollTextView tv_m3;
@@ -18,7 +23,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
+//        initView();
+
+        initTestLinkedList();
+
+    }
+
+    /**
+     *
+     */
+    private void initTestLinkedList() {
+        LinkedList<String> mList = new LinkedList<>();
+
+        mList.add("1");
+        mList.add("2");
+        mList.add("3");
+        mList.add("4");
+        mList.addFirst("5");
+        mList.add("6");
+        mList.addLast("7");
+        Log.e(TAG, ">>>>" + mList.toString());
+
+        mList.addFirst(mList.remove(3));
+        Log.e(TAG, ">>>>" + mList.toString());
+
+        Collections.swap(mList, 6, 0);
+        Log.e(TAG, ">>>>" + mList.toString());
+
     }
 
     private void initView() {
