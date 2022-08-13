@@ -2,4 +2,6 @@
     <string name="app_name">ZT_fullDialog</string>
 
     <string name="s9_151"><![CDATA[确认放弃免费使用<span style=\"color:#00CB6F\">$%1$s</span>盈利更多的机会吗？]]></string>
+
+    <string name="s8_109">ID number (must match the number on your government-issued ID)</string>
 </resources>

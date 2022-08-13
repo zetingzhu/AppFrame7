@@ -34,4 +34,53 @@
         app:slantedTextColor="@color/white"
         app:slantedTextSize="8sp" />
 
+    <com.xtrend.zt_fulldialog.MyTextInputLayout
+        android:id="@+id/til_id_number"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Google TextInputLayout ID number (must match the number on your government-issued ID)"
+        android:textColorHint="@color/color_6D778B"
+        app:counterEnabled="false"
+        app:errorTextAppearance="@style/TextInputErrorAppThemeV3"
+        app:hintTextAppearance="@style/TextInputCounter">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_id_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_selector_bg"
+            android:gravity="center_vertical"
+            android:maxLength="2"
+            android:textColor="@color/white"
+            android:textCursorDrawable="@drawable/bg_cashin_info_write_line"
+            android:textSize="@dimen/text_size_16sp" />
+    </com.xtrend.zt_fulldialog.MyTextInputLayout>
+
+
+    <com.xtrend.zt_fulldialog.googlecopy.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="My TextInputLayout ID number (must match the number on your government-issued ID)"
+        android:textColorHint="@color/color_6D778B"
+        app:counterEnabled="false"
+        app:errorTextAppearance="@style/TextInputErrorAppThemeV3"
+        app:hintTextAppearance="@style/TextInputCounter">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_selector_bg"
+            android:gravity="center_vertical"
+            android:maxLength="2"
+            android:textColor="@color/white"
+            android:textCursorDrawable="@drawable/bg_cashin_info_write_line"
+            android:textSize="@dimen/text_size_16sp" />
+    </com.xtrend.zt_fulldialog.googlecopy.TextInputLayout>
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/s8_109" />
+
 </LinearLayout>
