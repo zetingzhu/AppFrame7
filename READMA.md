@@ -8,6 +8,8 @@ zt-threeprogress
 
 zt_fulldialog
 修改定义全屏对话框，上面一层隐形顶部也能去掉
+MyTextInputLayout 自定义的Inputlayout 适配自己程序的输入框，带删除 ，带眼睛，带错误信息展示
+
 
 Zt-MarqueeText
 textview 多种跑马灯效果 ， MarqueeForeverTextView修改成自己需要的跑马灯效果
